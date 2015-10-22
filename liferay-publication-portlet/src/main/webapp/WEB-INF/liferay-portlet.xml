@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 6.2.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_6_2_0.dtd">
+
+<liferay-portlet-app>
+	<portlet>
+		<portlet-name>liferay-publication-admin</portlet-name>
+		<icon>/icon.png</icon>
+        <configuration-action-class>fr.lagab.portlet.publication.web.PublicationConfiguration</configuration-action-class>
+        <indexer-class>fr.lagab.portlet.publication.web.asset.index.PublicationIndexer</indexer-class>
+        <template-handler>fr.lagab.portlet.publication.web.template.PublicationTemplateHandler</template-handler>
+        <control-panel-entry-category>site_administration.content</control-panel-entry-category>
+        <!--<control-panel-entry-weight>1.0</control-panel-entry-weight>-->
+        <asset-renderer-factory>fr.lagab.portlet.publication.web.asset.PublicationAssetRenderFactory</asset-renderer-factory>
+        <ddm-display>fr.lagab.portlet.publication.web.ddm.PublicationDDMDisplay</ddm-display>
+        <preferences-unique-per-layout>false</preferences-unique-per-layout>
+        <preferences-owned-by-group>true</preferences-owned-by-group>
+        <instanceable>false</instanceable>
+        <scopeable>true</scopeable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+        <css-class-wrapper>publication-portlet</css-class-wrapper>
+        <!--<add-default-resource>false</add-default-resource>-->
+	</portlet>
+	<role-mapper>
+		<role-name>administrator</role-name>
+		<role-link>Administrator</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>guest</role-name>
+		<role-link>Guest</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>power-user</role-name>
+		<role-link>Power User</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>user</role-name>
+		<role-link>User</role-link>
+	</role-mapper>
+</liferay-portlet-app>

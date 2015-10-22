@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="fr.lagab.portlet.publication.service.PublicationLocalService" class="fr.lagab.portlet.publication.service.impl.PublicationLocalServiceImpl" />
+	<bean id="fr.lagab.portlet.publication.service.PublicationService" class="fr.lagab.portlet.publication.service.impl.PublicationServiceImpl" />
+	<bean id="fr.lagab.portlet.publication.service.persistence.PublicationPersistence" class="fr.lagab.portlet.publication.service.persistence.PublicationPersistenceImpl" parent="basePersistence" />
+	<bean id="fr.lagab.portlet.publication.service.PublicationStructureLocalService" class="fr.lagab.portlet.publication.service.impl.PublicationStructureLocalServiceImpl" />
+	<bean id="fr.lagab.portlet.publication.service.PublicationStructureService" class="fr.lagab.portlet.publication.service.impl.PublicationStructureServiceImpl" />
+	<bean id="fr.lagab.portlet.publication.service.PublicationTemplateLocalService" class="fr.lagab.portlet.publication.service.impl.PublicationTemplateLocalServiceImpl" />
+	<bean id="fr.lagab.portlet.publication.service.PublicationTemplateService" class="fr.lagab.portlet.publication.service.impl.PublicationTemplateServiceImpl" />
+</beans>

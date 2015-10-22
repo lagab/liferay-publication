@@ -1,0 +1,114 @@
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+
+<service-builder package-path="fr.lagab.portlet.publication">
+	<namespace>post</namespace>
+    <entity name="Publication" local-service="true" uuid="true" table="publication">
+
+        <!-- PK fields -->
+        <column name="id" type="long" primary="true"></column>
+
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+
+        <!-- Audit fields -->
+
+        <column name="companyId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Other fields -->
+        <column name="folderId" type="long" />
+        <column name="title" type="String" localized="false" />
+        <column name="urlTitle" type="String" />
+        <column name="description" type="String" localized="false" />
+        <column name="content" type="String" />
+        <column name="structureId" type="long" />
+        <column name="templateId" type="long" />
+        <column name="status" type="int" />
+
+
+        <!-- Finder methods -->
+
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
+        <finder name="CompanyId" return-type="Collection">
+            <finder-column name="companyId" />
+        </finder>
+        <finder name="StructureId" return-type="Collection">
+            <finder-column name="structureId" arrayable-operator="OR" />
+        </finder>
+        <finder name="TemplateId" return-type="Collection">
+            <finder-column name="templateId" />
+        </finder>
+        <finder name="G_U" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="userId" />
+        </finder>
+        <finder name="G_S" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="structureId" />
+        </finder>
+        <finder name="G_T" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="templateId" />
+        </finder>
+
+        <!-- References -->
+        <reference package-path="com.liferay.mail" entity="Mail" />
+        <reference package-path="com.liferay.portal" entity="Company" />
+        <reference package-path="com.liferay.portal" entity="Group" />
+        <reference package-path="com.liferay.portlet.asset" entity="AssetCategory" />
+        <reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
+        <reference package-path="com.liferay.portlet.asset" entity="AssetLink" />
+        <reference package-path="com.liferay.portlet.asset" entity="AssetTag" />
+        <reference package-path="com.liferay.portlet.dynamicdatamapping" entity="DDMStructure" />
+        <reference package-path="com.liferay.portlet.dynamicdatamapping" entity="DDMTemplate" />
+        <reference package-path="com.liferay.portlet.ratings" entity="RatingsStats" />
+        <reference package-path="com.liferay.portlet.social" entity="SocialActivity"></reference>
+        <reference package-path="com.liferay.portlet.social" entity="SocialActivityCounter"></reference>
+        <reference package-path="com.liferay.portlet.trash" entity="TrashEntry"></reference>
+
+    </entity>
+
+    <entity name="PublicationStructure" local-service="true" remote-service="true" deprecated="true" table="publication_structure">
+
+        <!-- References -->
+
+        <reference package-path="com.liferay.portal" entity="Group" />
+        <reference package-path="com.liferay.portlet.dynamicdatamapping" entity="DDMStructure" />
+    </entity>
+    <entity name="PublicationTemplate" local-service="true" remote-service="true" deprecated="true" table="publication_template">
+
+        <!-- References -->
+
+        <reference package-path="com.liferay.portal" entity="Group" />
+        <reference package-path="com.liferay.portal" entity="Image" />
+        <reference package-path="com.liferay.portlet.dynamicdatamapping" entity="DDMTemplate" />
+    </entity>
+
+    <exceptions>
+        <exception>DuplicateFolderName</exception>
+        <exception>DuplicateStructureElement</exception>
+        <exception>DuplicateStructureId</exception>
+        <exception>DuplicateTemplateId</exception>
+        <exception>DuplicatePublicationId</exception>
+        <exception>FolderName</exception>
+        <exception>RequiredStructure</exception>
+        <exception>RequiredTemplate</exception>
+        <exception>StructureId</exception>
+        <exception>StructureInheritance</exception>
+        <exception>StructureName</exception>
+        <exception>StructureXsd</exception>
+        <exception>TemplateId</exception>
+        <exception>TemplateName</exception>
+        <exception>TemplateXsl</exception>
+        <exception>NoSuchStructure</exception>
+        <exception>NoSuchTemplate</exception>
+        <exception>PublicationTitle</exception>
+        <exception>PublicationContentSize</exception>
+        <exception>PublicationContent</exception>
+    </exceptions>
+</service-builder>

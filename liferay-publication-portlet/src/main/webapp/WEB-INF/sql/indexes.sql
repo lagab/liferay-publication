@@ -1,0 +1,10 @@
+create index IX_F9AA4DF6 on publication (companyId);
+create index IX_DA39D9F8 on publication (groupId);
+create index IX_470DFBA6 on publication (groupId, structureId);
+create index IX_AFC0FE61 on publication (groupId, templateId);
+create index IX_5F59BA32 on publication (groupId, userId);
+create index IX_FF28F0EC on publication (structureId);
+create index IX_AD6F485B on publication (templateId);
+create index IX_F76D8A82 on publication (uuid_);
+create index IX_9B483466 on publication (uuid_, companyId);
+create unique index IX_59FE9C68 on publication (uuid_, groupId);
