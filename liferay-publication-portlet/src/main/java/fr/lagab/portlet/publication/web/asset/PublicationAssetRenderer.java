@@ -7,6 +7,7 @@ import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
 import com.liferay.portal.kernel.trash.TrashRenderer;
 import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.security.permission.PermissionChecker;
+import com.liferay.portal.util.PortalUtil;
 import com.liferay.portlet.asset.model.BaseAssetRenderer;
 import fr.lagab.portlet.publication.model.Publication;
 import fr.lagab.portlet.publication.web.util.PortletKeys;
@@ -136,11 +137,11 @@ public class PublicationAssetRenderer  extends BaseAssetRenderer implements Tras
     public PortletURL getURLEdit(LiferayPortletRequest liferayPortletRequest,
                                  LiferayPortletResponse liferayPortletResponse) throws Exception {
 
-        PortletURL portletURL = liferayPortletResponse.createLiferayPortletURL(
-                getControlPanelPlid(liferayPortletRequest), PortletKeys.PUBLICATION_PORTLET,
+        PortletURL portletURL = PortalUtil.getControlPanelPortletURL(
+                liferayPortletRequest, PortletKeys.PUBLICATION_PORTLET, 0,
                 PortletRequest.RENDER_PHASE);
 
-        portletURL.setParameter("mvcPath", "/html/admin/edit_publication.jsp");
+        portletURL.setParameter("jspPage", "/html/publication/admin/edit_publication.jsp");
         portletURL.setParameter("entryId", String.valueOf(_publication.getId()));
 
         return portletURL;

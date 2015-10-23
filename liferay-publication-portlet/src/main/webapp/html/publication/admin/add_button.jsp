@@ -9,8 +9,7 @@
 
     <c:if test="<%= true %>">
         <liferay-portlet:renderURL var="addArticleURL" windowState="<%= LiferayWindowState.MAXIMIZED.toString() %>">
-            <portlet:param name="struts_action" value="/journal/edit_article" />
-            <portlet:param name="mvcPath" value="/html/publication_admin/edit_publication.jsp" />
+            <portlet:param name="jspPage" value="/html/publication/admin/edit_publication.jsp" />
             <portlet:param name="redirect" value="<%= currentURL %>" />
             <portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
         </liferay-portlet:renderURL>
@@ -28,8 +27,7 @@
                 %>
 
                 <liferay-portlet:renderURL var="addPostURL" windowState="<%= LiferayWindowState.MAXIMIZED.toString() %>">
-                    <portlet:param name="struts_action" value="/journal/edit_article" />
-                    <portlet:param name="mvcPath" value="/html/publication/admin/edit_publication.jsp" />
+                    <portlet:param name="jspPage" value="/html/publication/admin/edit_publication.jsp" />
                     <portlet:param name="redirect" value="<%= currentURL %>" />
                     <portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
                     <portlet:param name="structureId" value="<%= ddmStructure.getStructureKey() %>" />

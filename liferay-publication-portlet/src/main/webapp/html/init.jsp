@@ -80,6 +80,9 @@
 <%@ page import="com.liferay.portlet.asset.model.AssetCategory" %>
 <%@ page import="com.liferay.portal.kernel.util.ListUtil" %>
 <%@ page import="com.liferay.portal.kernel.util.LocaleUtil" %>
+<%@page import="com.liferay.portal.kernel.util.DateFormatFactoryUtil"%>
+<%@page import="com.liferay.taglib.aui.AUIUtil" %>
+<%@ page import="java.util.Date" %>
 
 <%@ page import="fr.lagab.portlet.publication.model.Publication" %>
 <%@ page import="fr.lagab.portlet.publication.web.util.PublicationPermission" %>
@@ -103,6 +106,7 @@
     PortletURL currentURLObj = PortletURLUtil.getCurrent(liferayPortletRequest, liferayPortletResponse);
 
     String currentURL = currentURLObj.toString();
+    String referringPortletResource = ParamUtil.getString(request, "referringPortletResource");
 
     String relatedCategoryId = PrefsParamUtil.getString(portletPreferences, request, "categoryId", StringPool.BLANK);
     relatedCategoryId = StringUtil.merge(portletPreferences.getValues("categoryId", StringPool.EMPTY_ARRAY), StringPool.COMMA_AND_SPACE);

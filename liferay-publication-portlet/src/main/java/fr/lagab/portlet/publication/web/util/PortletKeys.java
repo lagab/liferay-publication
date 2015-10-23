@@ -5,7 +5,7 @@ package fr.lagab.portlet.publication.web.util;
  * @since  21/10/15.
  */
 public class PortletKeys {
-    public static final String PUBLICATION_PORTLET = "publication_admin_WAR_Postportlet";
+    public static final String PUBLICATION_PORTLET = "liferaypublicationadmin_WAR_liferaypublicationportlet";
 
     public static final String DYNAMIC_DATA_MAPPING = "166";
     public static final String ADD_PUBLICATION = "ADD_PUBLICATION";

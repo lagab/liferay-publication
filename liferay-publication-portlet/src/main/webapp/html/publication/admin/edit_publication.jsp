@@ -114,18 +114,14 @@
             <input name="xml" type="hidden" value="" />
         </aui:form>
 
-        <portlet:actionURL var="editPublicationActionURL"  name="editPublication">
-            <portlet:param name="mvcPath" value="/html/publication_admin/edit_publication.jsp" />
-            <portlet:param name="<%= Constants.CMD %>" value="<%= ((publication == null) || Validator.isNull(publication.getId())) ? Constants.ADD : Constants.UPDATE %>" />
-        </portlet:actionURL>
+        <portlet:actionURL var="addtPublicationURL"  name='<%= (publication != null) ? "updatePublication" : "addPublication" %>' />
 
         <portlet:renderURL var="editPublicationRenderURL" windowState="<%= WindowState.MAXIMIZED.toString() %>">
             <portlet:param name="struts_action" value="/journal/edit_article" />
-            <portlet:param name="mvcPath" value="/html/publication_admin/edit_publication.jsp" />
+            <portlet:param name="mvcPath" value="/html/publication/admin/edit_publication.jsp" />
         </portlet:renderURL>
 
-        <aui:form action="<%= editPublicationActionURL %>" cssClass="lfr-dynamic-form" enctype="multipart/form-data" method="post" name="fm1" onSubmit='<%= renderResponse.getNamespace() + "submitForm(event);" %>'>
-            <aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= ((publication == null) || Validator.isNull(publication.getId())) ? Constants.ADD : Constants.UPDATE %>"/>
+        <aui:form action="<%= addtPublicationURL %>" cssClass="lfr-dynamic-form" enctype="multipart/form-data" method="post" name="fm1" onSubmit='<%= renderResponse.getNamespace() + "submitForm(event);" %>'>
             <aui:input name="redirect" type="hidden" value="<%= redirect %>" />
             <aui:input name="backURL" type="hidden" value="<%= backURL %>" />
             <aui:input name="groupId" type="hidden" value="<%= groupId %>" />

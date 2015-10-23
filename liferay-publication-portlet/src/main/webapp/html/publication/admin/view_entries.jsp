@@ -219,17 +219,17 @@
                     tempRowURL.setParameter("folderId", String.valueOf(curArticle.getFolderId()));
                     tempRowURL.setParameter("articleId", String.valueOf(curArticle.getId()));
 
-                    request.setAttribute("view_entries.jsp-article", curArticle);
+                    request.setAttribute("view_entries.jsp-entry", curArticle);
 
                     request.setAttribute("view_entries.jsp-tempRowURL", tempRowURL);
                 %>
 
                 <c:choose>
                     <c:when test='<%= displayStyle.equals("icon") %>'>
-                        <liferay-util:include page="/html/portlet/journal/view_article_icon.jsp" />
+                        <jsp:include page="/html/publication/admin/row/view_entry_icon.jsp" />
                     </c:when>
                     <c:otherwise>
-                        <liferay-util:include page="/html/portlet/journal/view_article_descriptive.jsp" />
+                        <jsp:include page="/html/publication/admin/row/view_entry_descriptive.jsp" />
                     </c:otherwise>
                 </c:choose>
             </c:when>

@@ -16,6 +16,19 @@
 
 <%@ include file="/html/init.jsp" %>
 
-<div class="alert alert-danger">
-    <liferay-ui:message key="an-unexpected-error-occurred" />
-</div>
+<%
+    String referringPortletResource = ParamUtil.getString(request, "referringPortletResource");
+
+    Portlet selPortlet = PortletLocalServiceUtil.getPortletById(company.getCompanyId(), referringPortletResource);
+%>
+
+<aui:script>
+    Liferay.fire(
+        'closeWindow',
+        {
+            id: '_<%= HtmlUtil.escapeJS(selPortlet.getPortletId()) %>_editAsset',
+            portletAjaxable: <%= selPortlet.isAjaxable() %>,
+            refresh: '<%= HtmlUtil.escapeJS(selPortlet.getPortletId()) %>'
+        }
+    );
+</aui:script>

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.portlet.PortletRequest;
 import javax.portlet.PortletURL;
 
 /**
@@ -89,13 +90,18 @@ public class PublicationAssetRenderFactory extends BaseAssetRendererFactory{
             return null;
         }
 
-        PortletURL portletURL = liferayPortletResponse.createRenderURL(PortletKeys.PUBLICATION_PORTLET);
-        portletURL.setParameter("jspPage", "/html/admin/edit_publication.jsp");
+        PortletURL portletURL = PortalUtil.getControlPanelPortletURL(
+                liferayPortletRequest, PortletKeys.PUBLICATION_PORTLET, 0,
+                PortletRequest.RENDER_PHASE);
+
+        //PortletURL portletURL = liferayPortletResponse.createRenderURL(PortletKeys.PUBLICATION_PORTLET);
+        portletURL.setParameter("jspPage", "/html/publication/admin/edit_publication.jsp");
         if(liferayPortletRequest.getPreferences().getValue("queryName0","").equals("assetCategories")){
             portletURL.setParameter("cats_selected", StringUtil.merge(
                     liferayPortletRequest.getPreferences().getValues("queryValues0",StringPool.EMPTY_ARRAY),
                     StringPool.COMMA));
         }
+        System.out.println(portletURL.toString());
 
         return portletURL;
     }
