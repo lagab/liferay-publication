@@ -30,7 +30,7 @@
                     <portlet:param name="jspPage" value="/html/publication/admin/edit_publication.jsp" />
                     <portlet:param name="redirect" value="<%= currentURL %>" />
                     <portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
-                    <portlet:param name="structureId" value="<%= ddmStructure.getStructureKey() %>" />
+                    <portlet:param name="ddmStructureId" value="<%= String.valueOf(ddmStructure.getStructureId()) %>" />
                 </liferay-portlet:renderURL>
 
                 <aui:nav-item href="<%= addPostURL %>" label="<%= HtmlUtil.escape(ddmStructure.getName(themeDisplay.getLocale())) %>" />

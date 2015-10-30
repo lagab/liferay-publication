@@ -53,18 +53,11 @@
         long ddmStructureId = ParamUtil.getLong(request, "ddmStructureId");
 
         if (ddmStructureId > 0) {
-            try {
-                ddmStructure = DDMStructureLocalServiceUtil.getStructure(ddmStructureId);
-
-            }
-            catch (NoSuchStructureException nsse) {
-                _log.error(nsse);
-            }
+                ddmStructure = DDMStructureLocalServiceUtil.fetchDDMStructure(ddmStructureId);
         }
         else if (Validator.isNotNull(structureId)) {
             try {
-                ddmStructure = DDMStructureLocalServiceUtil.getStructure(themeDisplay.getSiteGroupId(), PortalUtil.getClassNameId(Publication.class), structureId, true);
-                ddmStructureId = ddmStructure.getStructureId();
+                ddmStructure = DDMStructureLocalServiceUtil.fetchStructure(themeDisplay.getSiteGroupId(), PortalUtil.getClassNameId(Publication.class), structureId, true);
             }
             catch (NoSuchStructureException nsse) {
                 _log.error(nsse);
@@ -77,20 +70,17 @@
 
         long ddmTemplateId = GetterUtil.getLong(templateId);
 
+        if(Validator.isNotNull(ddmStructure)){
+            ddmTemplateId = ddmStructure.getTemplates().get(0).getTemplateId();
+        }
+
         if (ddmTemplateId > 0) {
-            try {
-                ddmTemplate = DDMTemplateLocalServiceUtil.getTemplate(ddmTemplateId);
-                ddmTemplateId = ddmTemplate.getTemplateId();
-            }
-            catch (NoSuchTemplateException nste) {
-                _log.error(nste);
-            }
+                ddmTemplate = DDMTemplateLocalServiceUtil.fetchDDMTemplate(ddmTemplateId);
         }
         else if (Validator.isNotNull(templateId)) {
             try {
-                ddmTemplate = DDMTemplateLocalServiceUtil.getTemplate(groupId, PortalUtil.getClassNameId(DDMStructure.class), templateId, true);
-                ddmTemplateId = ddmTemplate.getTemplateId();
-                System.out.println(ddmTemplate);
+                ddmTemplate = DDMTemplateLocalServiceUtil.fetchTemplate(groupId, PortalUtil.getClassNameId(DDMStructure.class), templateId, true);
+                _log.info(ddmTemplate);
             }
             catch (NoSuchStructureException nste) {
                 _log.error(nste);

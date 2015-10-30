@@ -213,11 +213,11 @@
                 <%
                     PortletURL tempRowURL = liferayPortletResponse.createRenderURL();
 
-                    tempRowURL.setParameter("struts_action", "/journal/edit_article");
+                    tempRowURL.setParameter("jspPage", "/html/publication/admin/edit_publication.jsp");
                     tempRowURL.setParameter("redirect", currentURL);
                     tempRowURL.setParameter("groupId", String.valueOf(curArticle.getGroupId()));
                     tempRowURL.setParameter("folderId", String.valueOf(curArticle.getFolderId()));
-                    tempRowURL.setParameter("articleId", String.valueOf(curArticle.getId()));
+                    tempRowURL.setParameter("entryId", String.valueOf(curArticle.getId()));
 
                     request.setAttribute("view_entries.jsp-entry", curArticle);
 

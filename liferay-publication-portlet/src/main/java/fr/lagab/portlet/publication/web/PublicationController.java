@@ -130,11 +130,11 @@ public class PublicationController extends MVCPortlet{
         try {
             if (publicationId <= 0) {
                 LOGGER.info("add publication");
-                publication = PublicationLocalServiceUtil.addPublication(companyId,groupId, userId, createDate, folderId, title, content, description, structureId, templateId, status, serviceContext);
+                //publication = PublicationLocalServiceUtil.addPublication(companyId,groupId, userId, createDate, folderId, title, content, description, structureId, templateId, status, serviceContext);
 
             } else {
                 LOGGER.info("update publication");
-                publication = PublicationLocalServiceUtil.updatePublication(publicationId, userId, title, description,content,serviceContext);
+                //publication = PublicationLocalServiceUtil.updatePublication(publicationId, userId, title, description,content,serviceContext);
 
             }
             LOGGER.info(publication.getTitle());
